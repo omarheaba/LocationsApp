@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NavbarAnimation.Maui.Views.Pages.ProfilePage"
+             Title="ProfilePage"
+             xmlns:simpleCore="clr-namespace:SimpleToolkit.Core;assembly=SimpleToolkit.Core">
+    
+    <Grid RowDefinitions="100, 1.25*, Auto, *, 55"
+          ColumnDefinitions="*, Auto, *" Margin="-2">
+        
+        <!-- Overlay box -->
+        <Grid Grid.RowSpan="5" Grid.ColumnSpan="3">
+            <Image Source="backgroundimg1.jpg" Aspect="AspectFill"/>
+            <Border BackgroundColor="{StaticResource Secondary}"
+                        Opacity="0.9"/>
+        </Grid>
+
+        <Frame Grid.Row="1" Grid.Column="1"
+               WidthRequest="250" CornerRadius="15"
+               BackgroundColor="{StaticResource Primary}"
+               BorderColor="{x:Null}">
+
+            <Grid RowDefinitions="*, 1.25*">
+                
+                <VerticalStackLayout VerticalOptions="Center">
+                    
+                    <!-- Profile button -->
+                    <Border HeightRequest="60" WidthRequest="60"
+                        StrokeShape="RoundRectangle 30, 30, 30, 30"
+                        Stroke="{StaticResource Secondary}"
+                        BackgroundColor="{StaticResource Secondary}" StrokeThickness="1">
+
+                        <simpleCore:Icon Source="user2" TintColor="{StaticResource Primary}"
+                                 WidthRequest="30" HeightRequest="30"/>
+
+                    </Border>
+
+                    <Label Text="PROFILE"
+                           TextColor="{StaticResource Secondary}"
+                           HorizontalOptions="Center" FontFamily="OpenSansBold"/>
+                </VerticalStackLayout>
+
+                <!-- Button -->
+                <VerticalStackLayout Grid.Row="1">
+                    
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <simpleCore:Icon Source="pin1" TintColor="{StaticResource Secondary}"
+                                 WidthRequest="20" HeightRequest="20"/>
+
+                        <Button Text="My Locations" TextColor="{StaticResource Secondary}"
+                                BackgroundColor="Transparent" Background="{x:Null}"
+                                FontSize="15" Padding="5"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <simpleCore:Icon Source="history" TintColor="{StaticResource Secondary}"
+                                 WidthRequest="20" HeightRequest="20"/>
+
+                        <Button Text="History" TextColor="{StaticResource Secondary}"
+                                BackgroundColor="Transparent" Background="{x:Null}"
+                                FontSize="15" Padding="5"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <simpleCore:Icon Source="settings" TintColor="{StaticResource Secondary}"
+                                 WidthRequest="20" HeightRequest="20"/>
+
+                        <Button Text="Settings" TextColor="{StaticResource Secondary}"
+                                BackgroundColor="Transparent" Background="{x:Null}"
+                                FontSize="15" Padding="5"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <simpleCore:Icon Source="help" TintColor="{StaticResource Secondary}"
+                                 WidthRequest="20" HeightRequest="20"/>
+
+                        <Button Text="Help" TextColor="{StaticResource Secondary}"
+                                BackgroundColor="Transparent" Background="{x:Null}"
+                                FontSize="15" Padding="5"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <simpleCore:Icon Source="telephone1" TintColor="{StaticResource Secondary}"
+                                 WidthRequest="20" HeightRequest="20"/>
+
+                        <Button Text="Support" TextColor="{StaticResource Secondary}"
+                                BackgroundColor="Transparent" Background="{x:Null}"
+                                FontSize="15" Padding="5"/>
+                    </HorizontalStackLayout>
+                    
+                </VerticalStackLayout>
+                
+            </Grid>
+            
+        </Frame>
+        
+        <!-- Signout button -->
+        <Button Grid.Row="3" Grid.Column="1"
+                Text="Signout" FontSize="16" FontAttributes="Bold"
+                HorizontalOptions="Center" VerticalOptions="End"
+                BackgroundColor="Transparent" Background="{x:Null}"
+                TextColor="{StaticResource Primary}"/>
+    </Grid>
+</ContentPage>

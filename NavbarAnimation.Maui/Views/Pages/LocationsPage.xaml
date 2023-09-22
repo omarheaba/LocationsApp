@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NavbarAnimation.Maui.Views.Pages.LocationsPage"
+             Title="LocationsPage"
+             xmlns:simpleCore="clr-namespace:SimpleToolkit.Core;assembly=SimpleToolkit.Core"
+             xmlns:controls="clr-namespace:NavbarAnimation.Maui.Views.Controls">
+    <Grid RowDefinitions="Auto, Auto, *, Auto">
+
+        <!-- Overlay box -->
+        <Grid Grid.RowSpan="4">
+            <Image Source="backgroundimg2.jpg" Aspect="AspectFill"
+                       Opacity="0.2"/>
+            <Border BackgroundColor="{StaticResource Secondary}"
+                        Opacity="0.1"/>
+        </Grid>
+
+        <Grid HeightRequest="50" Margin="20, 40" Padding="10, 0"
+                  ColumnDefinitions="Auto, *, Auto">
+            <!-- Back button -->
+            <simpleCore:Icon Source="left_chevron11" TintColor="{StaticResource Secondary}"
+                                 WidthRequest="30" HeightRequest="30">
+                <simpleCore:Icon.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </simpleCore:Icon.GestureRecognizers>
+            </simpleCore:Icon>
+
+            <Border Grid.Column="2" HeightRequest="50" WidthRequest="50"
+                        StrokeShape="RoundRectangle 25, 25, 25, 25"
+                        Stroke="{StaticResource Secondary}"
+                        BackgroundColor="{StaticResource Secondary}" StrokeThickness="1">
+
+                <simpleCore:Icon Source="user2" TintColor="{StaticResource Primary}"
+                                 WidthRequest="25" HeightRequest="25"/>
+
+            </Border>
+        </Grid>
+
+        <HorizontalStackLayout Grid.Row="1"
+                               HorizontalOptions="Center">
+            <VerticalStackLayout>
+                <Frame Grid.Column="2" HeightRequest="100" WidthRequest="100"
+                           CornerRadius="15" BackgroundColor="{StaticResource Secondary}"
+                           BorderColor="{x:Null}">
+                    <simpleCore:Icon Source="coffee_cup" TintColor="{StaticResource Primary}"
+                                 WidthRequest="45" HeightRequest="45"
+                                         HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Frame>
+
+                <Label Text="Coffee shop" TextColor="{StaticResource Secondary}"
+                       FontSize="22"/>
+            </VerticalStackLayout>
+            
+        </HorizontalStackLayout>
+        
+        
+        
+        <!-- Locations list -->
+        <CollectionView Grid.Row="2" Grid.RowSpan="2" Margin="20, 40, 20, 0"
+                        ItemsSource="{Binding LocationsList}"
+                        SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                
+                <DataTemplate>
+                    <Border HeightRequest="140" Padding="0"
+                            BackgroundColor="{StaticResource Secondary}"
+                            StrokeShape="RoundRectangle 35"
+                            Stroke="{StaticResource Secondary}" StrokeThickness="3"
+                            Margin="0, 0, 0, 30">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal"/>
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+                                        <Setter TargetName="locationNameLabel" Property="Label.TextColor" Value="{StaticResource Secondary}"/>
+                                        <Setter TargetName="ratingLabel" Property="Label.TextColor" Value="{StaticResource Secondary}"/>
+                                        <Setter TargetName="addressLabel" Property="Label.TextColor" Value="{StaticResource Secondary}"/>
+                                        <Setter TargetName="favIcon" Property="simpleCore:Icon.TintColor" Value="{StaticResource Secondary}"/>
+                                        <Setter TargetName="pinIcon" Property="simpleCore:Icon.TintColor" Value="{StaticResource Secondary}"/>
+                                        <Setter TargetName="playIcon" Property="simpleCore:Icon.TintColor" Value="{StaticResource Primary}"/>
+                                        <Setter TargetName="playButtonBorder" Property="Border.Background" Value="{StaticResource Secondary}"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Grid RowDefinitions="*, *, *"
+                              ColumnDefinitions="*, Auto" Padding="10, 20, 20, 30">
+
+                            <simpleCore:Icon x:Name="favIcon" Grid.Column="1" 
+                                     Source="{Binding FavoriteIcon}" TintColor="{StaticResource Primary}"
+                                 WidthRequest="20" HeightRequest="20" Margin="15"/>
+
+                            <VerticalStackLayout Grid.RowSpan="3" Spacing="2"
+                                         Margin="15, 0, 0, 0"
+                                         VerticalOptions="Center">
+                                <Label x:Name="locationNameLabel" Text="{Binding LocationName}"
+                                       TextColor="{StaticResource Primary}" FontSize="16"/>
+
+                                <HorizontalStackLayout Spacing="5">
+                                    <controls:SimpleRatingControl Amount="5"
+                                                          CurrentValue="{Binding LocationRating}"
+                                                          AccentColor="Orange"
+                                                          StarSize="18" Spacing="1"
+                                                          VerticalOptions="Center"/>
+
+                                    <Label x:Name="ratingLabel" Text="{Binding LocationRating}" FontSize="13" TextColor="{StaticResource Primary}"
+                                   VerticalOptions="Start"/>
+                                </HorizontalStackLayout>
+
+                                <Grid ColumnDefinitions="Auto, *">
+                                    <simpleCore:Icon x:Name="pinIcon"
+                                                Source="pin" TintColor="{StaticResource Primary}"
+                                                WidthRequest="20" HeightRequest="20"/>
+
+                                    <VerticalStackLayout Grid.Column="1">
+                                        <Label x:Name="addressLabel" Text="{Binding LocationAddress}"
+                                       TextColor="{StaticResource Primary}"
+                                       FontSize="15" Margin="10, 0"/>
+
+                                        <Label TextColor="#CCC" FontSize="11"
+                                       Margin="10, 0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding LocationLatitude}"/>
+                                                    <Span Text="   "/>
+                                                    <Span Text="{Binding LocationLongitude}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </VerticalStackLayout>
+
+                            <Border x:Name="playButtonBorder" Grid.Column="1" Grid.Row="2" HeightRequest="50" WidthRequest="50"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 25"
+                                    BackgroundColor="{StaticResource Primary}">
+
+                                <simpleCore:Icon x:Name="playIcon" Grid.Column="1" 
+                                     Source="play11" TintColor="{StaticResource Secondary}"
+                                 WidthRequest="20" HeightRequest="20"
+                                         HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                            </Border>
+
+                        </Grid>
+
+                    </Border>
+                </DataTemplate>
+                
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+       
+        
+        <!-- Gradient color box -->
+        <Border Grid.Row="3" HeightRequest="400" StrokeThickness="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0, 0" EndPoint="0, 1">
+                    <GradientStop Color="Transparent" Offset="0.6"/>
+                    <GradientStop Color="WhiteSmoke" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+    </Grid>
+</ContentPage>

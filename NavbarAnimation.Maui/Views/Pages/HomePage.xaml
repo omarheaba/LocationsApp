@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="NavbarAnimation.Maui.Views.Pages.HomePage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NavbarAnimation.Maui.Views.Pages"
+             BackgroundColor="#EEE"
+             xmlns:simpleCore="clr-namespace:SimpleToolkit.Core;assembly=SimpleToolkit.Core">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto, Auto, *">
+            
+            <!-- Overlay box -->
+            <Grid Grid.RowSpan="3">
+                <Image Source="backgroundimg2.jpg" Aspect="AspectFill"
+                       Opacity="0.2"/>
+                <Border BackgroundColor="{StaticResource Secondary}"
+                        Opacity="0.1"/>
+            </Grid>
+
+            <Grid HeightRequest="50" Margin="20, 40" Padding="10, 0"
+                  ColumnDefinitions="Auto, *, Auto">
+                <simpleCore:Icon Source="menu22" TintColor="{StaticResource Secondary}"
+                                 WidthRequest="30" HeightRequest="30"/>
+
+                <!-- Profile button -->
+                <Border Grid.Column="2" HeightRequest="50" WidthRequest="50"
+                        StrokeShape="RoundRectangle 25, 25, 25, 25"
+                        Stroke="{StaticResource Secondary}"
+                        BackgroundColor="{StaticResource Secondary}" StrokeThickness="1">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                    </Border.GestureRecognizers>
+
+                    <simpleCore:Icon Source="user2" TintColor="{StaticResource Primary}"
+                                 WidthRequest="25" HeightRequest="25"/>
+                    
+                </Border>
+            </Grid>
+            
+            <!-- Searchbar -->
+            <Grid Grid.Row="1" Margin="30, 10, 30, 50">
+                <Border BackgroundColor="{StaticResource Primary}"
+                        Stroke="{StaticResource Primary}" StrokeThickness="1"
+                        HeightRequest="55" StrokeShape="RoundRectangle 25, 25, 25, 25">
+                    <Border.Shadow>
+                        <Shadow Brush="{StaticResource Secondary}"
+                                Offset="0, 15" Radius="25" Opacity="0.3"/>
+                    </Border.Shadow>
+
+                    <Grid ColumnDefinitions="Auto, *">
+                        <simpleCore:Icon Source="loupe11" TintColor="#CECECE"
+                                 WidthRequest="25" HeightRequest="25" Margin="15, 0, 0, 0"/>
+
+                        <Entry Grid.Column="1" Placeholder="Search"
+                               PlaceholderColor="#CECECE" FontSize="18"
+                               TextColor="{StaticResource Secondary}" Margin="15, 0"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+            </Grid>
+            
+            <!-- Locations Boxes -->
+            <Grid RowDefinitions="Auto, *"
+                  Grid.Row="2" Margin="50">
+                <Label Text="Choose your
+                       location!" TextColor="{StaticResource Secondary}" 
+                       FontSize="25" FontAttributes="Bold" Margin="5, 5, 5, 15"
+                       FontFamily="OpenSansBold"/>
+
+                <Grid Grid.Row="1" RowDefinitions="Auto,30, Auto"
+                      ColumnDefinitions="Auto,30, Auto"
+                      HorizontalOptions="CenterAndExpand">
+
+                    <Frame HeightRequest="130" WidthRequest="130"
+                           CornerRadius="15" BackgroundColor="#FC7BD5"
+                           BorderColor="{x:Null}">
+                        <simpleCore:Icon Source="clapper" TintColor="{StaticResource Primary}"
+                                 WidthRequest="65" HeightRequest="65"
+                                         HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Column="2" HeightRequest="130" WidthRequest="130"
+                           CornerRadius="15" BackgroundColor="#AE7DFA"
+                           BorderColor="{x:Null}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+                        <simpleCore:Icon Source="coffee_cup" TintColor="{StaticResource Primary}"
+                                 WidthRequest="65" HeightRequest="65"
+                                         HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="2" HeightRequest="130" WidthRequest="130"
+                           CornerRadius="15" BackgroundColor="#7FC6FA"
+                           BorderColor="{x:Null}">
+                        <simpleCore:Icon Source="house1" TintColor="{StaticResource Primary}"
+                                 WidthRequest="65" HeightRequest="65"
+                                         HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="2" Grid.Column="2" HeightRequest="130" WidthRequest="130"
+                           CornerRadius="15" BackgroundColor="#FFBD66"
+                           BorderColor="{x:Null}">
+                        <simpleCore:Icon Source="shop1" TintColor="{StaticResource Primary}"
+                                 WidthRequest="65" HeightRequest="65"
+                                         HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Frame>
+
+                </Grid>
+            </Grid>
+            
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="clr-namespace:NavbarAnimation.Maui.Views.Controls"
+    xmlns:simpleCore="clr-namespace:SimpleToolkit.Core;assembly=SimpleToolkit.Core"
+    x:Class="NavbarAnimation.Maui.Views.Controls.TabBarView"
+    InputTransparent="False">
+
+    <ContentView.Resources>
+        <x:Double x:Key="ViewHeight">90</x:Double>
+        <Style TargetType="{x:Type c:TabBarIconView}">
+            <Setter Property="HeightRequest" Value="25"/>
+            <Setter Property="WidthRequest" Value="35"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="VerticalOptions" Value="Start"/>
+        </Style>
+        <Style TargetType="{x:Type simpleCore:ContentButton}">
+            <Setter Property="VerticalOptions" Value="Fill"/>
+            <Setter Property="HorizontalOptions" Value="Fill"/>
+            <Setter Property="HeightRequest" Value="{StaticResource ViewHeight}"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+    </ContentView.Resources>
+
+    <Grid
+        VerticalOptions="Center"
+        HeightRequest="{StaticResource ViewHeight}"
+        CompressedLayout.IsHeadless="True">
+        <GraphicsView
+            x:Name="backGraphicsView"
+            HeightRequest="{StaticResource ViewHeight}"
+            InputTransparent="True"
+            Background="Transparent"/>
+        <Grid
+            x:Name="buttonsGrid"
+            CompressedLayout.IsHeadless="True"
+            HeightRequest="{StaticResource ViewHeight}"
+            VerticalOptions="End" HorizontalOptions="Fill"
+            ColumnDefinitions="*,*,*,*,*">
+            
+            <simpleCore:ContentButton
+                Grid.Column="0" Clicked="ButtonTapped"
+                SemanticProperties.Description="Ribbon page">
+                <c:TabBarIconView Source="map.png" Page="BlankPage"/>
+                
+            </simpleCore:ContentButton>
+            
+            <simpleCore:ContentButton
+                Grid.Column="1" Clicked="ButtonTapped"
+                SemanticProperties.Description="Folder page">
+                <c:TabBarIconView Source="pin1.png" Page="LocationsPage"/>
+                
+            </simpleCore:ContentButton>
+            <simpleCore:ContentButton
+                Grid.Column="2" Clicked="ButtonTapped"
+                SemanticProperties.Description="Home page">
+                <c:TabBarIconView Source="apps11.png" Page="HomePage"/>
+            </simpleCore:ContentButton>
+            <simpleCore:ContentButton
+                Grid.Column="3" Clicked="ButtonTapped"
+                SemanticProperties.Description="Pin page">
+                <c:TabBarIconView Source="user11.png" Page="BlankPage"/>
+            </simpleCore:ContentButton>
+            <simpleCore:ContentButton
+                Grid.Column="4" Clicked="ButtonTapped"
+                SemanticProperties.Description="Chat page">
+                <c:TabBarIconView Source="settings.png" Page="BlankPage"/>
+            </simpleCore:ContentButton>
+            
+        </Grid>
+    </Grid>
+</ContentView>
