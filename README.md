@@ -1,7 +1,7 @@
 
 UI Challenge using .NET MAUI - Locations App
 
-tutorial playlist on YouTube : 
+Tutorial playlist on YouTube : 
 https://www.youtube.com/playlist?list=PLmscn5YT3anF0o-77JaR_H2mT0qAlz-ru
 
 UI Design on Freepik :
